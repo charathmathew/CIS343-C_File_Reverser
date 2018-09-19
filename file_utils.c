@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "file_utils.h"
 #include <sys/stat.h>
 
@@ -14,6 +15,8 @@ int read_file(char* filename, char **buffer){
   struct stat st;
   stat(filename, &st);
   int size = st.st_size;
+
+  *buffer = (char*) malloc(sizeof(char) * size);
 
   //TODO: find out how to use fread to read
   //the file into memory buffer

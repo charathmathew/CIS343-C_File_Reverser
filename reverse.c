@@ -24,10 +24,6 @@ int main(int argc, char** argv){
     int size = st.st_size;
 
     fclose(inputfile);
-    //allocate memory to store the contents of the file
-    buffer = (char*) malloc(sizeof(char) * size);
-
-    //TODO: error check the above malloc operation
 
     //read the contents of the file into
     //the allocated memory buffer
