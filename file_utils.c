@@ -1,12 +1,22 @@
+/**************************************************************
+* This file contains functions that perform
+* file utilities
+*
+*@author Mathew Charath
+**************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
-#include "file_utils.h"
 #include <sys/stat.h>
+#include "file_utils.h"
 
+/*************************************************************
+Function that reads data from a file into a memory buffer
+
+@param filename the file to read from
+@param buffer an allocated memory location
+@return numBytes number of bytes read into the memory buffer
+*************************************************************/
 int read_file(char* filename, char **buffer){
-  /*
-  -read the data into the allocated memory buffer
-  */
 
   FILE* inputfile = fopen(filename,"r");
 
@@ -27,6 +37,15 @@ int read_file(char* filename, char **buffer){
   return numBytes;
 }
 
+/*************************************************************
+* Function that writes the data in the memory buffer into
+* the output file
+*
+* @param filename name of the output file
+* @param buffer memory buffer containing the data
+* @param size size of the contents to be written
+* @return numBytes number of bytes written onto the file
+*************************************************************/
 int write_file(char* filename, char *buffer, int size){
 
   FILE* outputfile = fopen(filename, "w");
