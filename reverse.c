@@ -12,17 +12,26 @@
 ******************************************************************/
 int main(int argc, char** argv){
   if(argc != 3){
+    printf("Incorrect Exceution!\n");
     printf("An input and output file must be specified\n");
     exit(0);
   }
   else{
+    //input file
     char* input_filename = argv[1];
+    //output file
     char* output_filename = argv[2];
+
+    //memory buffer
     char* buffer;
 
     FILE* inputfile = fopen(input_filename, "r");
 
     //TODO: error check for FILE opening
+    if(inputfile == NULL){
+      fprintf(stderr, "Error opening file...\n");
+      exit(0);
+    }
 
     //find size of the input file
     //code provided by Professor Woodring
