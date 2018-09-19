@@ -2,7 +2,7 @@
 * This file contains functions that perform
 * file utilities
 *
-*@author Mathew Charath
+* @author Mathew Charath
 **************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,11 +10,11 @@
 #include "file_utils.h"
 
 /*************************************************************
-Function that reads data from a file into a memory buffer
-
-@param filename the file to read from
-@param buffer an allocated memory location
-@return numBytes number of bytes read into the memory buffer
+* Function that reads data from a file into a memory buffer
+* 
+* @param filename the file to read from
+* @param buffer an allocated memory location
+* @return numBytes number of bytes read into the memory buffer
 *************************************************************/
 int read_file(char* filename, char **buffer){
 

@@ -3,6 +3,13 @@
 #include <sys/stat.h>
 #include "file_utils.h"
 
+/******************************************************************
+* Main function for a program that writes the reversed contents
+* of a file to an output file using the file utilities defined in
+* file_utilites.h and implemented in file_utilites.c
+*
+* @author Mathew Charath
+******************************************************************/
 int main(int argc, char** argv){
   if(argc != 3){
     printf("An input and output file must be specified\n");
