@@ -14,7 +14,6 @@ int main(int argc, char** argv){
     char* buffer;
 
     FILE* inputfile = fopen(input_filename, "r");
-    //FILE* outputfile = fopen(output_filename, "w");
 
     //TODO: error check for FILE opening
 
@@ -23,9 +22,6 @@ int main(int argc, char** argv){
     struct stat st;
     stat(input_filename, &st);
     int size = st.st_size;
-
-    //print the input file size
-    printf("The input file size: %d\n", size);
 
     fclose(inputfile);
     //allocate memory to store the contents of the file
@@ -54,6 +50,5 @@ int main(int argc, char** argv){
 
     free(buffer);
     free(reversedBuffer);
-    printf("The file has been reversed\n");
   }
 }
