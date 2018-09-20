@@ -11,7 +11,7 @@
 
 /*************************************************************
 * Function that reads data from a file into a memory buffer
-* 
+*
 * @param filename the file to read from
 * @param buffer an allocated memory location
 * @return numBytes number of bytes read into the memory buffer
@@ -19,6 +19,12 @@
 int read_file(char* filename, char **buffer){
 
   FILE* inputfile = fopen(filename,"r");
+
+  //error check for open file
+  if(inputfile == NULL){
+    fprintf(stderr, "Could not locate input file...\n");
+    exit(0);
+  }
 
   //find the size of the file
   //code provided by professor Woodring
@@ -28,7 +34,6 @@ int read_file(char* filename, char **buffer){
 
   *buffer = (char*) malloc(sizeof(char) * size);
 
-  //TODO: find out how to use fread to read
   //the file into memory buffer
   int numBytes = fread(*buffer, size, 1, inputfile);
 
@@ -50,8 +55,13 @@ int write_file(char* filename, char *buffer, int size){
 
   FILE* outputfile = fopen(filename, "w");
 
-  //TODO: find out how to use fwrite to write
-  //to the outputfile
+  //error check for open file
+  if(outputfile == NULL){
+    fprintf(stderr, "Could not locate output file...\n");
+    exit(0);
+  }
+
+  //write to the outputfile
   int numBytes = fwrite(buffer, size, 1, outputfile);
   fclose(outputfile);
 

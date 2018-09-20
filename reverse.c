@@ -27,7 +27,7 @@ int main(int argc, char** argv){
 
     FILE* inputfile = fopen(input_filename, "r");
 
-    //TODO: error check for FILE opening
+    //error check for FILE opening
     if(inputfile == NULL){
       fprintf(stderr, "Error opening file...\n");
       exit(0);
@@ -39,13 +39,18 @@ int main(int argc, char** argv){
     stat(input_filename, &st);
     int size = st.st_size;
 
+    //close the inputfile
     fclose(inputfile);
 
     //read the contents of the file into
     //the allocated memory buffer
     int numBytesRead = read_file(input_filename, &buffer);
 
-    //TODO: error check if numBytesRead is <= 0
+    //Terror check if numBytesRead is <= 0
+    if(numBytesRead <= 0){
+      fprintf(stderr, "Error reading from the file...\n");
+      exit(0);
+    }
 
     //reverse the contents of the buffer
     char* reversedBuffer = (char*) malloc(sizeof(char) * size);
@@ -53,12 +58,14 @@ int main(int argc, char** argv){
       reversedBuffer[i] = buffer[size-1 - i];
     }
 
-    //TODO: error check for the buffer reversal
-
     //write the reversedBuffer to the outputfile
     int numBytesWritten = write_file(output_filename, reversedBuffer, size);
 
     //TODO: error check for if numBytesWritten is <= 0
+    if(numBytesWritten <= 0){
+      fprintf(stderr, "Error writing to the file...\n");
+      exit(0);
+    }
 
     free(buffer);
     free(reversedBuffer);
